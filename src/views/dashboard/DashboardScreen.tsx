@@ -7,7 +7,8 @@ import {
   type ViewStyle,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import AppImages from '../../constants/AppImages';
+import AppImages from '../../core/constants/AppImages';
+import SvgAppIcon from '../../core/utils/components/svg_app_icon';
 
 type Tab = 'explore' | 'post' | 'login';
 
@@ -18,13 +19,13 @@ const tabs: Array<{ key: Tab; label: string }> = [
 ];
 
 function TabIcon({ name, color }: { name: Tab; color: string }) {
-  const Icon = {
-    explore: AppImages.search,
-    post: AppImages.postAdd,
-    login: AppImages.profile,
+  const icon = {
+    explore: AppImages.searchBlackIcon,
+    post: AppImages.postAdIcon,
+    login: AppImages.profileIcon,
   }[name];
 
-  return <Icon width={32} height={32} color={color} />;
+  return <SvgAppIcon icon={icon} color={color} size={20} />;
 }
 
 function BottomBar({
@@ -51,7 +52,9 @@ function BottomBar({
             style={({ pressed }) => [styles.tab, pressed && styles.tabPressed]}
           >
             <TabIcon name={tab.key} color={color} />
-            <Text style={[styles.tabLabel, { color }, isActive && styles.activeLabel]}>
+            <Text
+              style={[styles.tabLabel, { color }, isActive && styles.activeLabel]}
+            >
               {tab.label}
             </Text>
           </Pressable>
@@ -76,7 +79,7 @@ export default function DashboardScreen() {
       <BottomBar
         activeTab={activeTab}
         onTabPress={setActiveTab}
-        style={{ paddingBottom: Math.max(insets.bottom, 10) }}
+        style={{paddingBottom: Math.max(insets.bottom, 5)}}
       />
     </View>
   );
@@ -98,13 +101,12 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   bottomBar: {
-    minHeight: 104,
     flexDirection: 'row',
     alignItems: 'flex-start',
     backgroundColor: '#FFFFFF',
     borderTopColor: '#DEDEDE',
     borderTopWidth: StyleSheet.hairlineWidth,
-    paddingTop: 16,
+    paddingTop: 10,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: -2 },
     shadowOpacity: 0.05,
@@ -120,7 +122,7 @@ const styles = StyleSheet.create({
     opacity: 0.55,
   },
   tabLabel: {
-    fontSize: 16,
+    fontSize: 12,
     fontWeight: '400',
   },
   activeLabel: {
