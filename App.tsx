@@ -1,12 +1,15 @@
 import { StatusBar } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import DashboardScreen from './src/views/dashboard/DashboardScreen';
+import RootNavigator from './src/navigation/RootNavigator';
 
 function App() {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle="dark-content" backgroundColor="#F7F7F7" />
-      <DashboardScreen />
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
