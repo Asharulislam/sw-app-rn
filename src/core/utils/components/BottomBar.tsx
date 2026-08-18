@@ -3,6 +3,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import AppImages from '../../constants/AppImages';
 import AppRoutes from '../../constants/AppRoutes';
+import { colors } from '../../theme/colors';
 import SvgAppIcon from './svg_app_icon';
 
 const tabDetails = {
@@ -36,7 +37,7 @@ export default function BottomBar({
       {state.routes.map((route, index) => {
         const details = tabDetails[route.name as keyof typeof tabDetails];
         const isActive = state.index === index;
-        const color = isActive ? '#6D94D0' : '#777777';
+        const color = isActive ? colors.primary : colors.inactive;
 
         const onPress = () => {
           const event = navigation.emit({
@@ -83,11 +84,11 @@ const styles = StyleSheet.create({
   bottomBar: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    backgroundColor: '#FFFFFF',
-    borderTopColor: '#DEDEDE',
+    backgroundColor: colors.background,
+    borderTopColor: colors.border,
     borderTopWidth: StyleSheet.hairlineWidth,
     paddingTop: 10,
-    shadowColor: '#000000',
+    shadowColor: colors.shadow,
     shadowOffset: { width: 0, height: -2 },
     shadowOpacity: 0.05,
     shadowRadius: 5,

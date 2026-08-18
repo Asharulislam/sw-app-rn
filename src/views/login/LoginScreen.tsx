@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { colors } from '../../core/theme/colors';
 
 export default function LoginScreen() {
   return (
@@ -13,16 +14,16 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: colors.screenBackground,
     padding: 20,
   },
   title: {
-    color: '#222222',
+    color: colors.text,
     fontSize: 28,
     fontWeight: '700',
   },
   description: {
-    color: '#777777',
+    color: colors.secondaryText,
     fontSize: 15,
     marginTop: 8,
   },
